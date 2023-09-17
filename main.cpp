@@ -1,47 +1,60 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
-class inputs{
-    public:
-    int x, y;
-    string yChar;
-    void userinputs(){
-        cout << "輸入X個字串，字串不可超過Y個字(X,Y):";
-        cin >> x >> y;
-        cout << "輸入字串：";
-        cin >> yChar;
-        while(yChar.length() > y){
-            cin.clear();
-            cout << "字串長度超過Y個字，重新輸入"<< endl;
-            cin >> yChar;
-        }
-    }
-    int **matrix = new int*[x];
-    for (int i = 0; i < x; ++i) {
-        matrix[i] = new int[y];
-    }
-};
-class sort:inputs{
-    void bubbleSort(int arr[], int n){
-        if (n == 1){
-            return;
-        }
-        for (int i=0; i<n-1; i++){
-            if (arr[i] > arr[i+1]){
-                swap(arr[i], arr[i+1]);
+
+void swap(string &a, string &b){
+    string temp = a;
+    a = b;
+    b = temp;
+}
+
+void bubbleSort(string** arr, int n) {
+    for (int i=0; i<n-1; i++) {
+        for (int j=0; j<n-i-1; j++) {
+            if (int(arr[j][0][0])>int(arr[j+1][0][0])) {
+                swap(*(arr+j), *(arr+j+1));
             }
         }
-        bubbleSort(arr, n-1);
     }
-    void swap(int &a, int &b){
-        int temp = a;
-        a = b;
-        b = temp;
-    }
-};
+}
 
-int main()
-{
-    
+int main() {
+    int x, y;
+    cout << "輸入X個字串，字串不可超過Y個字(X,Y):";
+    cin >> x >> y;
+    int row = x;
+    int col = 1;
+
+    string** A = new string* [row];
+    for(int i=0; i<row; i++){
+        A[i]=new string[col];
+    }
+
+    for(int i=0; i<row; i++) {
+        for (int j=0; j<col; j++) {
+            cout << "輸入字串：";
+            cin >> A[i][j];
+            while (A[i][j].length()>y) {
+                cin.clear();
+                cout << "字串長度超過" << y << "個字，重新輸入" << endl;
+                cin >> A[i][j];
+            }
+        }
+    }
+
+    bubbleSort(A, row);
+
+    for (int i=0; i<row; i++) {
+        for (int j=0; j<col; j++) {
+            cout << A[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    for (int i=0; i<row; i++) {
+        delete[] A[i];
+    }
+    delete[] A;
+
     return 0;
 }
