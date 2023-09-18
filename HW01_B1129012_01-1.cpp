@@ -11,7 +11,7 @@ void swap(string &a, string &b){
 void bubbleSort(string** arr, int n) {
     for (int i=0; i<n-1; i++) {
         for (int j=0; j<n-i-1; j++) {
-            if (int(arr[j][0][0])>int(arr[j+1][0][0])) {
+            if (int(arr[j][0][0])<int(arr[j+1][0][0])) {
                 swap(*(arr+j), *(arr+j+1));
             }
         }
