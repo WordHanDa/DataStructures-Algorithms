@@ -26,22 +26,17 @@ int main() {
         A[i]=new string[col];
     }
     for(int i=0; i<row; i++){
-        for (int j=0; j<col; j++){
-            cout << "輸入字串：";
-            cin >> A[i][j];
-            while (A[i][j].length()>y){
-                cin.clear();
-                cout << "字串長度超過" << y << "個字，重新輸入" << endl;
-                cin >> A[i][j];
-            }
+        cout << "輸入字串：";
+        cin >> A[i][0];
+        while (A[i][0].length()>y){
+            cin.clear();
+            cout << "字串長度超過" << y << "個字，重新輸入" << endl;
+            cin >> A[i][0];
         }
     }
     bubbleSort(A, row);
     for (int i=0; i<row; i++){
-        for (int j=0; j<col; j++){
-            cout << A[i][j] << " ";
-        }
-        cout << endl;
+        cout << A[i][0] << " "<< endl;
     }
     for (int i=0; i<row; i++){
         delete[] A[i];
