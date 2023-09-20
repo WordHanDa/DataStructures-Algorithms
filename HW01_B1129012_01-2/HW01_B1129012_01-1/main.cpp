@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-
 void swap(string &a, string &b){
     string temp = a;
     a = b;
