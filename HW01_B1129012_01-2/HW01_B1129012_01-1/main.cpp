@@ -1,4 +1,4 @@
-#include <cstdlib>
+
 #include <iostream>
 using namespace std;
 
@@ -39,8 +39,7 @@ int main() {
     }
     bubbleSort(A, row);
     for (int i=0; i<row; i++){
-        cout << A[i][0] << " ";
-        cout << endl;
+        cout << A[i][0] << " " << endl;
     }
     for (int i = 0; i < 3; i++) {
         free(A[i]);
