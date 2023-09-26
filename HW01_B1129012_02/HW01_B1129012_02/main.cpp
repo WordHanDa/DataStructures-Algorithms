@@ -21,8 +21,7 @@ int main() {
         maxNameLength=(nameLength>maxNameLength)?nameLength:maxNameLength;
     }
     for (int i=0; i<row; i++){
-        long int spacesToAdd=maxNameLength-A[i][0].length();
-        for (int j=0; j<spacesToAdd; j++){
+        for (int j=0; j<maxNameLength-A[i][0].length(); j++){
             cout << " ";
         }
         cout << A[i][0] << " " << A[i][1] << endl;
