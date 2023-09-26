@@ -9,24 +9,24 @@ int main(){
     int col=2;
     size_t maxNameLength=0;
     string** A=new string*[row];
-    for (int i=0; i<row; i++){
+    for(int i=0; i<row; i++){
         A[i]=new string[col];
     }
-    for (int i=0; i<row; i++){
+    for(int i=0; i<row; i++){
         cout << "輸入名字:";
-        for (int j=0; j<col; j++){
+        for(int j=0; j<col; j++){
             cin >> A[i][j];
         }
         long int nameLength=A[i][0].length();
         maxNameLength=(nameLength>maxNameLength)?nameLength:maxNameLength;
     }
-    for (int i=0; i<row; i++){
-        for (int j=0; j<maxNameLength-A[i][0].length(); j++){
+    for(int i=0; i<row; i++){
+        for(int j=0; j<maxNameLength-A[i][0].length(); j++){
             cout << " ";
         }
         cout << A[i][0] << " " << A[i][1] << endl;
     }
-    for (int i=0; i<row; i++){
+    for(int i=0; i<row; i++){
         delete[] A[i];
     }
     delete[] A;
