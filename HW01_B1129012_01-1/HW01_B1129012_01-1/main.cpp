@@ -7,9 +7,9 @@ void swap(string &a, string &b){
     b = temp;
 }
 void bubbleSort(string** arr, int n){
-    for (int i=0; i<n-1; i++){
-        for (int j=0; j<n-i-1; j++){
-            if (int(arr[j][0][0])<int(arr[j+1][0][0])){
+    for(int i=0; i<n-1; i++){
+        for(int j=0; j<n-i-1; j++){
+            if(int(arr[j][0][0])<int(arr[j+1][0][0])){
                 swap(*(arr+j), *(arr+j+1));
             }
         }
@@ -35,10 +35,10 @@ int main() {
         }
     }
     bubbleSort(A, row);
-    for (int i=0; i<row; i++){
+    for(int i=0; i<row; i++){
         cout << A[i][0] << " " << endl;
     }
-    for (int i=0; i<row; i++){
+    for(int i=0; i<row; i++){
         delete[] A[i];
     }
     delete[] A;
