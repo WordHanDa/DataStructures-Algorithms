@@ -41,20 +41,20 @@ class Polynomial {
         }
     }
     Polynomial multiply(Polynomial other) const {
-            Polynomial result;
-            Node* current_a = headNode;
-            while (current_a != nullptr) {
-                Node* current_b = other.headNode;
-                while (current_b != nullptr) {
-                    int coef = current_a->coefficient * current_b->coefficient;
-                    int exp = current_a->exponent + current_b->exponent;
-                    result.insert_term(coef, exp);
-                    current_b = current_b->next;
-                }
-                current_a = current_a->next;
+        Polynomial result;
+        Node* current_a = headNode;
+        while (current_a != nullptr) {
+            Node* current_b = other.headNode;
+            while (current_b != nullptr) {
+                int coef = current_a->coefficient * current_b->coefficient;
+                int exp = current_a->exponent + current_b->exponent;
+                result.insert_term(coef, exp);
+                current_b = current_b->next;
             }
-            return result;
+            current_a = current_a->next;
         }
+        return result;
+    }
     void print(){
         Node* currentNode=headNode;
         while (currentNode!=nullptr) {
