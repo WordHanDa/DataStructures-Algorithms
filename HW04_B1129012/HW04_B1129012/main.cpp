@@ -23,16 +23,16 @@ class Polynomial {
     void insert_term(int coef, int exp) {
         Node* newNode = new Node(coef, exp);
         if(headNode==nullptr){
-            headNode = newNode;
+            headNode=newNode;
         }else{
             Node* currentNode = headNode;
-            Node* prevNode = nullptr;
+            Node* prevNode=nullptr;
             while (currentNode!=nullptr&&exp<currentNode->exponent){
-                prevNode = currentNode;
-                currentNode = currentNode->next;
+                prevNode=currentNode;
+                currentNode=currentNode->next;
             }
             if (currentNode!=nullptr&&exp==currentNode->exponent){
-                currentNode->coefficient += coef;
+                currentNode->coefficient+=coef;
                 delete newNode;
             }else{
                 newNode->next=currentNode;
@@ -42,16 +42,16 @@ class Polynomial {
     }
     Polynomial multiply(Polynomial other) const {
         Polynomial result;
-        Node* current_a = headNode;
-        while (current_a != nullptr) {
-            Node* current_b = other.headNode;
-            while (current_b != nullptr) {
-                int coef = current_a->coefficient * current_b->coefficient;
-                int exp = current_a->exponent + current_b->exponent;
+        Node* current_a=headNode;
+        while (current_a!=nullptr) {
+            Node* current_b=other.headNode;
+            while (current_b!=nullptr) {
+                int coef=current_a->coefficient*current_b->coefficient;
+                int exp=current_a->exponent+current_b->exponent;
                 result.insert_term(coef, exp);
-                current_b = current_b->next;
+                current_b=current_b->next;
             }
-            current_a = current_a->next;
+            current_a=current_a->next;
         }
         return result;
     }
@@ -76,7 +76,7 @@ class Polynomial {
 void inputPolynomial(Polynomial& poly, const std::string polynomialName) {
     int terms;
     std::cout<<"Enter the number of terms for the "<<polynomialName<<" polynomial: ";
-    std::cin >> terms;
+    std::cin>>terms;
     for (int i = 0; i < terms; ++i) {
         int coef, exp;
         std::cout<<"Enter coefficient and exponent for term "<<i+1<<" of the "<<polynomialName<<" polynomial: ";
