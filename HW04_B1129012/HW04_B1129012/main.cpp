@@ -74,7 +74,14 @@ class Polynomial {
         std::cout<<std::endl;
     }
 };
-
+void generatePatternPolynomial(Polynomial& poly,int term) {
+    for (int i = 0; i < term; ++i) {
+        int coef, exp;
+        coef=1;
+        exp=i;
+        poly.insert_term(coef, exp);
+    }
+}
 void inputPolynomial(Polynomial& poly, const std::string polynomialName) {
     int terms;
     std::cout<<"Enter the number of terms for the "<<polynomialName<<" polynomial: ";
@@ -90,10 +97,12 @@ void inputPolynomial(Polynomial& poly, const std::string polynomialName) {
 int main(int argc, const char * argv[]) {
     double START,END;
     Polynomial poly_a,poly_b;
-    inputPolynomial(poly_a, "first");
-    inputPolynomial(poly_b, "second");
+    generatePatternPolynomial(poly_a,1000);
+    generatePatternPolynomial(poly_b,1000);
+    //inputPolynomial(poly_a, "first");
+    //inputPolynomial(poly_b, "second");
     START = clock();
-    std::cout << "Result of multiplication: ";
+    std::cout << "Result of multiplication: "<<std::endl;
     poly_a.multiply(poly_b).print();
     END = clock();
     std::cout<<std::endl<<"執行時間："<<(END-START)/CLOCKS_PER_SEC<<"s";
