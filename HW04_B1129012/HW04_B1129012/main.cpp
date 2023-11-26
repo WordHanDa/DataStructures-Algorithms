@@ -88,7 +88,7 @@ void inputPolynomial(Polynomial& poly, const std::string polynomialName) {
     std::cin>>terms;
     for (int i = 0; i < terms; ++i) {
         int coef, exp;
-        std::cout<<"Enter coefficient and exponent for term "<<i+1<<" of the "<<polynomialName<<" polynomial: ";
+        std::cout<<"Enter coefficient and exponent for term "<<i++<<" of the "<<polynomialName<<" polynomial: ";
         std::cin>>coef>>exp;
         poly.insert_term(coef, exp);
     }
@@ -97,8 +97,8 @@ void inputPolynomial(Polynomial& poly, const std::string polynomialName) {
 int main(int argc, const char * argv[]) {
     double START,END;
     Polynomial poly_a,poly_b;
-    generatePatternPolynomial(poly_a,1000);
-    generatePatternPolynomial(poly_b,1000);
+    generatePatternPolynomial(poly_a,1500);
+    generatePatternPolynomial(poly_b,5);
     //inputPolynomial(poly_a, "first");
     //inputPolynomial(poly_b, "second");
     START = clock();
