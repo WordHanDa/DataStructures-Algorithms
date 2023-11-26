@@ -93,3 +93,4 @@ int main(int argc, const char * argv[]) {
     poly_a.multiply(poly_b).print();
     return 0;
 }
+//http://alrightchiu.github.io/SecondRound/linked-list-xin-zeng-zi-liao-shan-chu-zi-liao-fan-zhuan.html
