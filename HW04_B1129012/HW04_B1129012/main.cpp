@@ -6,6 +6,8 @@
 //
 
 #include <iostream>
+#include <time.h>
+using namespace std;
 
 class Node {
     public:
@@ -86,11 +88,15 @@ void inputPolynomial(Polynomial& poly, const std::string polynomialName) {
 }
 
 int main(int argc, const char * argv[]) {
+    double START,END;
     Polynomial poly_a,poly_b;
     inputPolynomial(poly_a, "first");
     inputPolynomial(poly_b, "second");
+    START = clock();
     std::cout << "Result of multiplication: ";
     poly_a.multiply(poly_b).print();
+    END = clock();
+    std::cout<<std::endl<<"執行時間："<<(END-START)/CLOCKS_PER_SEC<<"s";
     return 0;
 }
 //http://alrightchiu.github.io/SecondRound/linked-list-xin-zeng-zi-liao-shan-chu-zi-liao-fan-zhuan.html
