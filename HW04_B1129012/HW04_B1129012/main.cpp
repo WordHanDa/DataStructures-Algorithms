@@ -75,7 +75,7 @@ class Polynomial {
     }
 };
 void generatePatternPolynomial(Polynomial& poly,int term) {
-    for (int i = 0; i < term; ++i) {
+    for (int i = 0; i < term; i++) {
         int coef, exp;
         coef=1;
         exp=i;
