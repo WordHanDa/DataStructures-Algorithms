@@ -108,7 +108,7 @@ int main(int argc, const char * argv[]) {
     double START,END;
     Polynomial poly_a,poly_b;
     generatePatternPolynomial(poly_a,1500);
-    generatedensePatternPolynomial(poly_b, 5);
+    generatePatternPolynomial(poly_b, 5);
     //generatedensePatternPolynomial(poly_a,5);
     //generatedensePatternPolynomial(poly_b,5);
     //inputPolynomial(poly_a, "first");
