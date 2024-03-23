@@ -105,19 +105,19 @@ void printArray(int arr[], int size) {
     std::cout << std::endl;
 }
 int main(){
-    int max = 10;
+    int max = 1000;
     double START,END;
     int arr[max];
     int n = sizeof(arr)/sizeof(arr[0]);
     for (int i=0; i<max; i++) {
-        arr[i]=rand()%5000+1;
+        arr[i]=rand()%max+1;
     }
-    printArray(arr, n);
+    //printArray(arr, n);
     START = clock();
     std::cout << "Result of multiplication: "<<std::endl;
     //quickSort(arr, 0, n-1);
-    mergeSort(arr,0,n-1);
-    //eapSort(arr, n);
+    //mergeSort(arr,0,n-1);
+    heapSort(arr, n);
     END = clock();
     printArray(arr, n);
     std::cout<<std::endl<<"執行時間："<<(END-START)/CLOCKS_PER_SEC<<"s";
