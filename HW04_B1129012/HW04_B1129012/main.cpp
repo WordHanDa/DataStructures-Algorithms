@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <time.h>
+#include <stdlib.h>
 using namespace std;
 
 class Node {
@@ -82,6 +83,15 @@ void generatePatternPolynomial(Polynomial& poly,int term) {
         poly.insert_term(coef, exp);
     }
 }
+void generatedensePatternPolynomial(Polynomial& poly,int term) {
+    for (int i = 0; i < term; i++) {
+        srand(time(NULL));
+        int coef, exp;
+        coef=rand()%10;
+        exp=rand()%term;
+        poly.insert_term(coef, exp);
+    }
+}
 void inputPolynomial(Polynomial& poly, const std::string polynomialName) {
     int terms;
     std::cout<<"Enter the number of terms for the "<<polynomialName<<" polynomial: ";
@@ -98,7 +108,9 @@ int main(int argc, const char * argv[]) {
     double START,END;
     Polynomial poly_a,poly_b;
     generatePatternPolynomial(poly_a,1500);
-    generatePatternPolynomial(poly_b,5);
+    generatePatternPolynomial(poly_b, 5);
+    //generatedensePatternPolynomial(poly_a,5);
+    //generatedensePatternPolynomial(poly_b,5);
     //inputPolynomial(poly_a, "first");
     //inputPolynomial(poly_b, "second");
     START = clock();
