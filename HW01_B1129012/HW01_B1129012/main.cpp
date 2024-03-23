@@ -105,7 +105,7 @@ void printArray(int arr[], int size) {
     std::cout << std::endl;
 }
 int main(){
-    int max = 1000;
+    int max = 10;
     double START,END;
     srand(static_cast<unsigned int>(time(nullptr)));
     int arr[max];
