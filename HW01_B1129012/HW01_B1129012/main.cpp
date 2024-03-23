@@ -107,6 +107,7 @@ void printArray(int arr[], int size) {
 int main(){
     int max = 1000;
     double START,END;
+    srand(static_cast<unsigned int>(time(nullptr)));
     int arr[max];
     int n = sizeof(arr)/sizeof(arr[0]);
     for (int i=0; i<max; i++) {
