@@ -105,7 +105,7 @@ void printArray(int arr[], int size) {
     std::cout << std::endl;
 }
 int main(){
-    int max = 10;
+    int max = 20;
     double START,END;
     srand(static_cast<unsigned int>(time(nullptr)));
     int arr[max];
@@ -117,7 +117,7 @@ int main(){
     START = clock();
     std::cout << "Result of multiplication: "<<std::endl;
     //quickSort(arr, 0, n-1);
-    mergeSort(arr,0,n-1);
+    //mergeSort(arr,0,n-1);
     //heapSort(arr, n);
     END = clock();
     printArray(arr, n);
