@@ -201,31 +201,31 @@ void saveTreeToCSV(vector<Vertex>& tree, string filename) {
 
 int main() {
     int n, e;
-
+    
     // Get user input for number of nodes and edges
     cout << "Enter the number of nodes (n): ";
     cin >> n;
     cout << "Enter the number of edges (e): ";
     cin >> e;
-
+    
     // Check if e is within the limit
     if (e > (n * (n - 1)) / 2) {
         cout << "Invalid input: e should be less than or equal to (n choose 2)" << endl;
         return 1;
     }
-
+    
     // Define file paths
     string matrix_filename = "/Users/macbookpro/Downloads/未命名檔案夾/adjacency_matrix.csv";
     string list_filename = "/Users/macbookpro/Downloads/未命名檔案夾/adjacency_list.csv";
-
+    
     // Generate random undirected graph using both adjacency matrix and adjacency list
     vector<vector<int>> adj_matrix = generateRandomUndirectedGraph_Matrix(n, e, matrix_filename);
     vector<vector<int>> adj_list = generateRandomUndirectedGraph_List(n, e, list_filename);
-
+    
     // Initialize vertices for DFS and BFS
     vector<Vertex> vertices_DFS(n);
     vector<Vertex> vertices_BFS(n);
-
+    
     // Convert adjacency list to adjacency matrix
     vector<vector<int>> adj_matrix_converted(n, vector<int>(n, 0));
     for (int i = 0; i < n; ++i) {
@@ -234,34 +234,33 @@ int main() {
             adj_matrix_converted[j][i] = 1; // Undirected graph, so add edge in both directions
         }
     }
-
+    
     // Set adjacency lists for DFS and BFS vertices
     for (int i = 0; i < n; ++i) {
         vertices_DFS[i].adj = adj_matrix_converted[i];
         vertices_BFS[i].adj = adj_list[i];
     }
-
+    
     // Perform DFS on the graph
     DFS(vertices_DFS);
     saveTreeToCSV(vertices_BFS, "/Users/macbookpro/Downloads/未命名檔案夾/dfs_tree.csv");
-
-
+    
+    
     // Perform BFS on the graph starting from vertex 0
     BFS(vertices_BFS, 0);
     saveTreeToCSV(vertices_BFS, "/Users/macbookpro/Downloads/未命名檔案夾/bfs_tree.csv");
-
-
+    
+    
     // Output the discovery time and parent of each vertex for DFS
     cout << "DFS Results:" << endl;
     for (int i = 0; i < n; ++i) {
         cout << "Vertex " << i << ": Discovery time = " << vertices_DFS[i].time << ", Parent = " << vertices_DFS[i].pi << endl;
     }
-
+    
     // Output the distance and parent of each vertex for BFS
     cout << "BFS Results:" << endl;
     for (int i = 0; i < n; ++i) {
         cout << "Vertex " << i << ": Distance = " << vertices_BFS[i].d << ", Parent = " << vertices_BFS[i].pi << endl;
     }
-
     return 0;
 }
