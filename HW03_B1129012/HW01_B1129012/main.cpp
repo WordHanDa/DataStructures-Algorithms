@@ -1,4 +1,3 @@
-//https://www.cnblogs.com/mowangshiyiyi316/p/6661541.html
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -70,8 +69,8 @@ void BFS(vector<Vertex>& G, int s) {
 vector<vector<int>> generateRandomGraph(int n, int e){
     vector<vector<int>> adjMatrix(n, vector<int>(n, 0));
     srand(time(0));
-    int maxEdges = (n * (n - 1)) / 2;
-    if (e > maxEdges / 2){
+    int maxEdges = ((n * (n - 1)) / 2);
+    if (e > maxEdges){
         cout << "Error" << endl;
         return adjMatrix;
     }
@@ -90,23 +89,27 @@ vector<vector<int>> generateRandomGraph(int n, int e){
 
 void printAdjacencyMatrixCSV(const vector<vector<int>>& adjMatrix, const string& filename){
     ofstream file(filename);
-    for (const auto& row : adjMatrix){
-        for (int val : row){
-            file << val << ",";
+    file << ",";
+    for (int i = 0; i < adjMatrix.size(); ++i) {
+        file << i << ",";
+    }
+    file << endl;
+    for (int i = 0; i < adjMatrix.size(); ++i){
+        file << i << ",";
+        for (int j = 0; j < adjMatrix[i].size(); ++j){
+            file << adjMatrix[i][j] << ",";
         }
         file << endl;
     }
     file.close();
 }
 
-void printAdjacencyListCSV(const vector<vector<int>>& adjMatrix, const string& filename){
+void printAdjacencyListCSV(const vector<Vertex>& G, const string& filename){
     ofstream file(filename);
-    for (int i = 0; i < adjMatrix.size(); ++i){
+    for (int i = 0; i < G.size(); ++i){
         file << i << ",";
-        for (int j = 0; j < adjMatrix[i].size(); ++j){
-            if (adjMatrix[i][j]==1){
-                file << j << ",";
-            }
+        for (int j = 0; j < G[i].adj.size(); ++j){
+            file << G[i].adj[j] << ",";
         }
         file << endl;
     }
@@ -115,18 +118,20 @@ void printAdjacencyListCSV(const vector<vector<int>>& adjMatrix, const string& f
 
 void printDFSTreeCSV(const vector<Vertex>& G, const string& filename) {
     ofstream file(filename);
-    file << "Vertex,Discovery Time,Parent" << endl;
     for (int i = 0; i < G.size(); ++i){
-        file << i << "," << G[i].time << "," << G[i].pi << endl;
+        if(G[i].time!=G.size()){
+            file << i << "," << G[i].time << endl;
+        }else{
+            file << i << "," << i << endl;
+        }
     }
     file.close();
 }
 
 void printBFSTreeCSV(const vector<Vertex>& G, const string& filename){
     ofstream file(filename);
-    file << "Vertex,Distance,Parent" << endl;
     for (int i = 0; i < G.size(); ++i){
-        file << i << "," << G[i].d << "," << G[i].pi << endl;
+        file << i << "," << G[i].d << endl;
     }
     file.close();
 }
@@ -145,7 +150,7 @@ int main(){
         }
     }
     printAdjacencyMatrixCSV(adjMatrix, "/Users/macbookpro/Downloads/未命名檔案夾/AdjacencyMatrix.csv");
-    printAdjacencyListCSV(adjMatrix, "/Users/macbookpro/Downloads/未命名檔案夾/AdjacencyList.csv");
+    printAdjacencyListCSV(G, "/Users/macbookpro/Downloads/未命名檔案夾/AdjacencyList.csv");
     DFS(G);
     BFS(G, 0);
     printDFSTreeCSV(G, "/Users/macbookpro/Downloads/未命名檔案夾/DFSTree.csv");
