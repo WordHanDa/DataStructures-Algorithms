@@ -75,12 +75,11 @@ vector<vector<int>> generateRandomGraph(int n, int e){
         cout << "Error" << endl;
         return adjMatrix;
     }
-    // Generate edges
     int edgesAdded = 0;
     while (edgesAdded < e){
         int u = rand() % n;
         int v = rand() % n;
-        if (u != v && adjMatrix[u][v] == 0){
+        if (u!=v && adjMatrix[u][v]==0){
             adjMatrix[u][v] = 1;
             adjMatrix[v][u] = 1;
             edgesAdded++;
@@ -91,10 +90,6 @@ vector<vector<int>> generateRandomGraph(int n, int e){
 
 void printAdjacencyMatrixCSV(const vector<vector<int>>& adjMatrix, const string& filename){
     ofstream file(filename);
-    if (!file.is_open()){
-        cerr << "Error: Unable to open file " << filename << endl;
-        return;
-    }
     for (const auto& row : adjMatrix){
         for (int val : row){
             file << val << ",";
@@ -106,10 +101,6 @@ void printAdjacencyMatrixCSV(const vector<vector<int>>& adjMatrix, const string&
 
 void printAdjacencyListCSV(const vector<vector<int>>& adjMatrix, const string& filename){
     ofstream file(filename);
-    if (!file.is_open()){
-        cerr << "Error: Unable to open file " << filename << endl;
-        return;
-    }
     for (int i = 0; i < adjMatrix.size(); ++i){
         file << i << ",";
         for (int j = 0; j < adjMatrix[i].size(); ++j){
@@ -124,10 +115,6 @@ void printAdjacencyListCSV(const vector<vector<int>>& adjMatrix, const string& f
 
 void printDFSTreeCSV(const vector<Vertex>& G, const string& filename) {
     ofstream file(filename);
-    if (!file.is_open()){
-        cerr << "Error: Unable to open file " << filename << endl;
-        return;
-    }
     file << "Vertex,Discovery Time,Parent" << endl;
     for (int i = 0; i < G.size(); ++i){
         file << i << "," << G[i].time << "," << G[i].pi << endl;
@@ -137,10 +124,6 @@ void printDFSTreeCSV(const vector<Vertex>& G, const string& filename) {
 
 void printBFSTreeCSV(const vector<Vertex>& G, const string& filename){
     ofstream file(filename);
-    if (!file.is_open()){
-        cerr << "Error: Unable to open file " << filename << endl;
-        return;
-    }
     file << "Vertex,Distance,Parent" << endl;
     for (int i = 0; i < G.size(); ++i){
         file << i << "," << G[i].d << "," << G[i].pi << endl;
@@ -148,16 +131,11 @@ void printBFSTreeCSV(const vector<Vertex>& G, const string& filename){
     file.close();
 }
 
-int main() {
+int main(){
     int n, e;
-    cout << "Enter the number of nodes (n): ";
-    cin >> n;
-    cout << "Enter the number of edges (e): ";
-    cin >> e;
-    
+    cout << "Enter the number of nodes & edges (n,e): ";
+    cin >> n >> e;
     vector<vector<int>> adjMatrix = generateRandomGraph(n, e);
-    printAdjacencyMatrixCSV(adjMatrix, "/Users/macbookpro/Downloads/未命名檔案夾/AdjacencyMatrix.csv");
-    printAdjacencyListCSV(adjMatrix, "/Users/macbookpro/Downloads/未命名檔案夾/AdjacencyList.csv");
     vector<Vertex> G(n);
     for (int i = 0; i < n; ++i){
         for (int j = 0; j < n; ++j){
@@ -166,9 +144,11 @@ int main() {
             }
         }
     }
+    printAdjacencyMatrixCSV(adjMatrix, "/Users/macbookpro/Downloads/未命名檔案夾/AdjacencyMatrix.csv");
+    printAdjacencyListCSV(adjMatrix, "/Users/macbookpro/Downloads/未命名檔案夾/AdjacencyList.csv");
     DFS(G);
-    printDFSTreeCSV(G, "/Users/macbookpro/Downloads/未命名檔案夾/DFSTree.csv");
     BFS(G, 0);
+    printDFSTreeCSV(G, "/Users/macbookpro/Downloads/未命名檔案夾/DFSTree.csv");
     printBFSTreeCSV(G, "/Users/macbookpro/Downloads/未命名檔案夾/BFSTree.csv");
     return 0;
 }
