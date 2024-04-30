@@ -55,7 +55,6 @@ void BFS(vector<Vertex>& G, int s) {
     while (!Q.empty()){
         int u = Q.front();
         Q.pop();
-
         for (int v : G[u].adj){
             if (G[v].color == 'w'){
                 G[v].color = 'g';
@@ -71,7 +70,6 @@ void BFS(vector<Vertex>& G, int s) {
 vector<vector<int>> generateRandomGraph(int n, int e){
     vector<vector<int>> adjMatrix(n, vector<int>(n, 0));
     srand(time(0));
-
     int maxEdges = (n * (n - 1)) / 2;
     if (e > maxEdges / 2){
         cout << "Error" << endl;
@@ -137,7 +135,6 @@ void printDFSTreeCSV(const vector<Vertex>& G, const string& filename) {
     file.close();
 }
 
-// Function to print BFS tree to CSV file
 void printBFSTreeCSV(const vector<Vertex>& G, const string& filename){
     ofstream file(filename);
     if (!file.is_open()){
