@@ -122,7 +122,7 @@ void printDFSTreeCSV(const vector<Vertex>& G, const string& filename) {
         if(G[i].time!=G.size()){
             file << i << "," << G[i].time << endl;
         }else{
-            file << i << "," << i << endl;
+            file << i << "," << endl;
         }
     }
     file.close();
@@ -131,7 +131,9 @@ void printDFSTreeCSV(const vector<Vertex>& G, const string& filename) {
 void printBFSTreeCSV(const vector<Vertex>& G, const string& filename){
     ofstream file(filename);
     for (int i = 0; i < G.size(); ++i){
-        file << i << "," << G[i].d << endl;
+        if(G[i].pi!=-1){
+            file << i << "," << G[i].pi << endl;
+        }
     }
     file.close();
 }
