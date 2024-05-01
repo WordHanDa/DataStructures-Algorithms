@@ -142,7 +142,7 @@ int main(){
     int n, e;
     cout << "Enter the number of nodes & edges (n,e): ";
     cin >> n >> e;
-    vector<vector<int>> adjMatrix = generateRandomGraph(n, e);
+    vector< vector<int> > adjMatrix = generateRandomGraph(n, e);
     vector<Vertex> G(n);
     for (int i = 0; i < n; ++i){
         for (int j = 0; j < n; ++j){
