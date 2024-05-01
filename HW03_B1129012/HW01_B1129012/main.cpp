@@ -66,8 +66,8 @@ void BFS(vector<Vertex>& G, int s) {
     }
 }
 
-vector<vector<int>> generateRandomGraph(int n, int e){
-    vector<vector<int>> adjMatrix(n, vector<int>(n, 0));
+vector< vector<int> > generateRandomGraph(int n, int e){
+    vector< vector<int> > adjMatrix(n, vector<int>(n, 0));
     srand(time(0));
     int maxEdges = ((n * (n - 1)) / 2);
     if (e > maxEdges){
@@ -87,7 +87,7 @@ vector<vector<int>> generateRandomGraph(int n, int e){
     return adjMatrix;
 }
 
-void printAdjacencyMatrixCSV(const vector<vector<int>>& adjMatrix, const string& filename){
+void printAdjacencyMatrixCSV(const vector< vector<int> >& adjMatrix, const string& filename){
     ofstream file(filename);
     file << ",";
     for (int i = 0; i < adjMatrix.size(); ++i) {
