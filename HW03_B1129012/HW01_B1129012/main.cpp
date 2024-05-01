@@ -44,7 +44,6 @@ void BFS(vector<Vertex>& G, int s) {
     for (int i = 0; i < G.size(); ++i){
         G[i].color = 'w';
         G[i].pi = -1;
-        G[i].d = numeric_limits<int>::max();
     }
     G[s].color = 'g';
     G[s].pi = -1;
